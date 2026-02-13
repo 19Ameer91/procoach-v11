@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إصلاح مشكلة الذاكرة المؤقتة - Pro Coach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="bg-gradient-to-br from-purple-50 to-blue-50 min-h-screen">
+    <div class="container mx-auto px-4 py-12">
+        <div class="max-w-3xl mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <div class="inline-block p-4 bg-yellow-100 rounded-full mb-4">
+                    <i class="fas fa-exclamation-triangle text-4xl text-yellow-600"></i>
+                </div>
+                <h1 class="text-4xl font-bold text-gray-800 mb-2">هل تواجه مشكلة 404؟</h1>
+                <p class="text-gray-600 text-lg">السبب: الذاكرة المؤقتة (Cache) للمتصفح</p>
+            </div>
+
+            <!-- Solutions Card -->
+            <div class="bg-white rounded-2xl shadow-xl p-8 mb-6">
+                <h2 class="text-2xl font-bold text-purple-900 mb-6 flex items-center">
+                    <i class="fas fa-tools ml-3 text-purple-600"></i>
+                    الحلول السريعة
+                </h2>
+
+                <div class="space-y-6">
+                    <!-- Solution 1 -->
+                    <div class="border-r-4 border-green-500 pr-4 py-2">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">
+                            ✅ الحل الأول: إعادة تحميل قوية (Hard Reload)
+                        </h3>
+                        <div class="bg-gray-100 rounded-lg p-4 space-y-2">
+                            <p class="text-gray-700"><strong>لنظام Windows/Linux:</strong></p>
+                            <code class="bg-gray-800 text-white px-4 py-2 rounded block">Ctrl + Shift + R</code>
+                            
+                            <p class="text-gray-700 mt-3"><strong>لنظام Mac:</strong></p>
+                            <code class="bg-gray-800 text-white px-4 py-2 rounded block">Cmd + Shift + R</code>
+                        </div>
+                    </div>
+
+                    <!-- Solution 2 -->
+                    <div class="border-r-4 border-blue-500 pr-4 py-2">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">
+                            ✅ الحل الثاني: نافذة خاصة (Incognito)
+                        </h3>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <ol class="list-decimal mr-6 space-y-2 text-gray-700">
+                                <li>افتح نافذة خاصة جديدة في المتصفح</li>
+                                <li>الصق الرابط وافتحه</li>
+                            </ol>
+                            <div class="mt-3 space-y-2">
+                                <p class="text-sm text-gray-600"><strong>Chrome/Edge:</strong> Ctrl+Shift+N</p>
+                                <p class="text-sm text-gray-600"><strong>Firefox:</strong> Ctrl+Shift+P</p>
+                                <p class="text-sm text-gray-600"><strong>Safari:</strong> Cmd+Shift+N</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Solution 3 -->
+                    <div class="border-r-4 border-purple-500 pr-4 py-2">
+                        <h3 class="text-xl font-bold text-gray-800 mb-2">
+                            ✅ الحل الثالث: مسح الذاكرة المؤقتة
+                        </h3>
+                        <div class="bg-gray-100 rounded-lg p-4">
+                            <ol class="list-decimal mr-6 space-y-2 text-gray-700">
+                                <li>اضغط على F12 لفتح Developer Tools</li>
+                                <li>انقر بزر الماوس الأيمن على زر Reload</li>
+                                <li>اختر "Empty Cache and Hard Reload"</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Test Button -->
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 rounded-2xl shadow-xl p-8 text-white text-center">
+                <h2 class="text-2xl font-bold mb-4">اختبار سريع</h2>
+                <p class="mb-6">اضغط الزر أدناه للذهاب مباشرةً إلى صفحة إنشاء دوري جديد</p>
+                <a href="/create-league" class="inline-block bg-white text-purple-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-gray-100 transition shadow-lg">
+                    <i class="fas fa-plus-circle ml-2"></i>
+                    إنشاء دوري جديد
+                </a>
+            </div>
+
+            <!-- Technical Info -->
+            <div class="mt-6 bg-blue-50 rounded-lg p-6 border border-blue-200">
+                <h3 class="font-bold text-blue-900 mb-2 flex items-center">
+                    <i class="fas fa-info-circle ml-2"></i>
+                    ملاحظة تقنية
+                </h3>
+                <p class="text-blue-800 text-sm">
+                    عند تحديث التطبيق، قد يحتفظ المتصفح بنسخ قديمة من الملفات (JavaScript, CSS).
+                    هذه الحلول تُجبر المتصفح على تنزيل النسخ الجديدة من الخادم مباشرةً.
+                </p>
+            </div>
+
+            <!-- Back Button -->
+            <div class="text-center mt-8">
+                <a href="/" class="text-purple-600 hover:text-purple-800 font-bold">
+                    <i class="fas fa-home ml-2"></i>
+                    العودة إلى الصفحة الرئيسية
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Auto-test if coming from specific page
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('autotest') === 'true') {
+            setTimeout(() => {
+                window.location.href = '/create-league';
+            }, 3000);
+        }
+    </script>
+</body>
+</html>

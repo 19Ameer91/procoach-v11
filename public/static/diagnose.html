@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تشخيص النظام - Pro Coach</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.0/dist/axios.min.js"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto bg-white rounded-xl shadow-lg p-8">
+        <h1 class="text-3xl font-bold text-blue-600 mb-6">🔧 تشخيص النظام</h1>
+        
+        <div class="space-y-4" id="results">
+            <p class="text-gray-600">جاري الفحص...</p>
+        </div>
+    </div>
+
+    <script>
+        async function diagnose() {
+            const resultsDiv = document.getElementById('results');
+            const results = [];
+            
+            // فحص المسارات
+            const routes = [
+                '/',
+                '/leagues',
+                '/create-league',
+                '/test',
+                '/static/test-auth',
+                '/api/teams',
+                '/api/leagues',
+                '/api/leagues/public'
+            ];
+            
+            results.push('<h2 class="text-xl font-bold text-gray-800 mb-3">🔍 فحص المسارات:</h2>');
+            results.push('<div class="space-y-2">');
+            
+            for (const route of routes) {
+                try {
+                    const response = await fetch(route, { method: 'HEAD' });
+                    const status = response.status;
+                    const statusClass = status === 200 ? 'bg-green-100 text-green-800' : 
+                                       status === 404 ? 'bg-red-100 text-red-800' : 
+                                       'bg-yellow-100 text-yellow-800';
+                    
+                    results.push(`
+                        <div class="flex items-center justify-between p-3 rounded-lg ${statusClass}">
+                            <span class="font-mono">${route}</span>
+                            <span class="font-bold">${status} ${response.statusText}</span>
+                        </div>
+                    `);
+                } catch (error) {
+                    results.push(`
+                        <div class="flex items-center justify-between p-3 rounded-lg bg-red-100 text-red-800">
+                            <span class="font-mono">${route}</span>
+                            <span class="font-bold">❌ خطأ: ${error.message}</span>
+                        </div>
+                    `);
+                }
+            }
+            
+            results.push('</div>');
+            
+            // معلومات إضافية
+            results.push(`
+                <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                    <h3 class="font-bold text-blue-900 mb-2">📊 معلومات النظام:</h3>
+                    <div class="text-sm space-y-1 text-blue-800">
+                        <p><strong>URL الحالي:</strong> ${window.location.href}</p>
+                        <p><strong>User Agent:</strong> ${navigator.userAgent}</p>
+                        <p><strong>الوقت:</strong> ${new Date().toLocaleString('ar-EG')}</p>
+                    </div>
+                </div>
+            `);
+            
+            // زر تحديث Cache
+            results.push(`
+                <div class="mt-6">
+                    <button onclick="clearCacheAndReload()" class="w-full bg-purple-600 text-white py-3 rounded-lg hover:bg-purple-700 transition font-bold">
+                        🔄 مسح الذاكرة المؤقتة وإعادة التحميل
+                    </button>
+                </div>
+            `);
+            
+            resultsDiv.innerHTML = results.join('');
+        }
+        
+        function clearCacheAndReload() {
+            if (confirm('هل تريد مسح الذاكرة المؤقتة وإعادة تحميل الصفحة؟')) {
+                // مسح localStorage
+                localStorage.clear();
+                
+                // مسح sessionStorage
+                sessionStorage.clear();
+                
+                // إعادة تحميل مع تجاهل Cache
+                window.location.reload(true);
+            }
+        }
+        
+        diagnose();
+    </script>
+</body>
+</html>
